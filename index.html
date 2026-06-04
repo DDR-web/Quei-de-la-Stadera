@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quei de la Stadera - Official Site</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="description" content="Quei de la Stadera — tradizione e vita milanese sul palco con sonorità moderne ed energiche. Canzoni vere, di quartiere, di Milano.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           VARIABILI CSS — TEMA SCURO (DEFAULT)
+           ============================================ */
+        :root {
+            --colore-sfondo: #000000;
+            --colore-testo: #ffffff;
+            --sfondo-scheda: #111111;
+            --colore-bordo: #222222;
+            --sfondo-pulsante: #ffffff;
+            --testo-pulsante: #000000;
+            --colore-accento: #a0a0a0;
+            --oro: #C9A84C;
+            --oro-opaco: #8B7332;
+            --bagliore-oro: rgba(201, 168, 76, 0.25);
+            --bagliore-oro-forte: rgba(201, 168, 76, 0.4);
+
+            /* PATTERN SCURO: opacity aumentata a 0.09 */
+            --pattern-sfondo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='10 10 180 150'%3E%3Cg transform='rotate(-25 100 85)' color='%23ffffff' opacity='0.09'%3E%3Cpolygon points='97,54 100,16 103,54' fill='currentColor'/%3E%3Cpolygon points='90,54 92,26 95,54' fill='currentColor'/%3E%3Cpolygon points='83,54 85,38 88,54' fill='currentColor'/%3E%3Cpolygon points='105,54 108,26 110,54' fill='currentColor'/%3E%3Cpolygon points='112,54 115,38 117,54' fill='currentColor'/%3E%3Cpath d='M 83,54 Q 60,54 35,60 C 25,65 22,48 32,46 C 38,45 40,51 36,53 C 34,54 33,52 35,51 M 117,54 Q 140,54 165,60 C 175,65 178,48 168,46 C 162,45 160,51 164,53 C 166,54 167,52 165,51' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M 94,70 Q 100,78 100,82 Q 100,78 106,70 Q 102,74 100,74 Q 98,74 94,70 Z M 99.2,81 L 100.8,81 L 100,109 Z' fill='currentColor'/%3E%3Cellipse cx='28' cy='90' rx='8' ry='6' transform='rotate(-25 28 90)' fill='currentColor'/%3E%3Crect x='33' y='65' width='2.5' height='25' fill='currentColor'/%3E%3Cpath d='M 35.5,65 Q 43,65 45,78 Q 41,70 35.5,75 Z' fill='currentColor'/%3E%3Cellipse cx='152' cy='98' rx='8' ry='6' transform='rotate(-25 152 98)' fill='currentColor'/%3E%3Crect x='157' y='76' width='2.5' height='22' fill='currentColor'/%3E%3Cellipse cx='176' cy='94' rx='8' ry='6' transform='rotate(-25 176 94)' fill='currentColor'/%3E%3Crect x='181' y='72' width='2.5' height='22' fill='currentColor'/%3E%3Cpolygon points='157,76 183.5,72 183.5,66 157,70' fill='currentColor'/%3E%3Cline x1='35' y1='120' x2='50' y2='120' stroke='currentColor' stroke-width='1.5'/%3E%3Ctext x='100' y='124' font-family='Times New Roman, Georgia, serif' font-size='12' font-weight='bold' text-anchor='middle' letter-spacing='1' fill='currentColor'%3EQUEI DE LA%3C/text%3E%3Cline x1='150' y1='120' x2='165' y2='120' stroke='currentColor' stroke-width='1.5'/%3E%3Ctext x='100' y='152' font-family='Times New Roman, Georgia, serif' font-size='28' font-weight='bold' text-anchor='middle' letter-spacing='2' fill='currentColor'%3ESTADERA%3C/text%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* ============================================
+           TEMA CHIARO
+           ============================================ */
+        body.modalita-chiara {
+            --colore-sfondo: #ffffff;
+            --colore-testo: #000000;
+            --sfondo-scheda: #f7f7f7;
+            --colore-bordo: #e0e0e0;
+            --sfondo-pulsante: #000000;
+            --testo-pulsante: #ffffff;
+            --colore-accento: #555555;
+            --oro: #9E8A45;
+            --oro-opaco: #7A6B35;
+            --bagliore-oro: rgba(158, 138, 69, 0.2);
+            --bagliore-oro-forte: rgba(158, 138, 69, 0.35);
+
+            /* PATTERN CHIARO: opacity aumentata a 0.10 */
+            --pattern-sfondo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='10 10 180 150'%3E%3Cg transform='rotate(-25 100 85)' color='%23000000' opacity='0.10'%3E%3Cpolygon points='97,54 100,16 103,54' fill='currentColor'/%3E%3Cpolygon points='90,54 92,26 95,54' fill='currentColor'/%3E%3Cpolygon points='83,54 85,38 88,54' fill='currentColor'/%3E%3Cpolygon points='105,54 108,26 110,54' fill='currentColor'/%3E%3Cpolygon points='112,54 115,38 117,54' fill='currentColor'/%3E%3Cpath d='M 83,54 Q 60,54 35,60 C 25,65 22,48 32,46 C 38,45 40,51 36,53 C 34,54 33,52 35,51 M 117,54 Q 140,54 165,60 C 175,65 178,48 168,46 C 162,45 160,51 164,53 C 166,54 167,52 165,51' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M 94,70 Q 100,78 100,82 Q 100,78 106,70 Q 102,74 100,74 Q 98,74 94,70 Z M 99.2,81 L 100.8,81 L 100,109 Z' fill='currentColor'/%3E%3Cellipse cx='28' cy='90' rx='8' ry='6' transform='rotate(-25 28 90)' fill='currentColor'/%3E%3Crect x='33' y='65' width='2.5' height='25' fill='currentColor'/%3E%3Cpath d='M 35.5,65 Q 43,65 45,78 Q 41,70 35.5,75 Z' fill='currentColor'/%3E%3Cellipse cx='152' cy='98' rx='8' ry='6' transform='rotate(-25 152 98)' fill='currentColor'/%3E%3Crect x='157' y='76' width='2.5' height='22' fill='currentColor'/%3E%3Cellipse cx='176' cy='94' rx='8' ry='6' transform='rotate(-25 176 94)' fill='currentColor'/%3E%3Crect x='181' y='72' width='2.5' height='22' fill='currentColor'/%3E%3Cpolygon points='157,76 183.5,72 183.5,66 157,70' fill='currentColor'/%3E%3Cline x1='35' y1='120' x2='50' y2='120' stroke='currentColor' stroke-width='1.5'/%3E%3Ctext x='100' y='124' font-family='Times New Roman, Georgia, serif' font-size='12' font-weight='bold' text-anchor='middle' letter-spacing='1' fill='currentColor'%3EQUEI DE LA%3C/text%3E%3Cline x1='150' y1='120' x2='165' y2='120' stroke='currentColor' stroke-width='1.5'/%3E%3Ctext x='100' y='152' font-family='Times New Roman, Georgia, serif' font-size='28' font-weight='bold' text-anchor='middle' letter-spacing='2' fill='currentColor'%3ESTADERA%3C/text%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* ============================================
+           MIGLIORAMENTI GLOBALI
+           ============================================ */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: var(--oro);
+            color: #000000;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--colore-sfondo);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--oro-opaco);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--oro);
+        }
+
+        /* ============================================
+           RESET DI BASE
+           ============================================ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--colore-sfondo);
+            background-image: var(--pattern-sfondo);
+            background-repeat: repeat;
+            background-attachment: fixed;
+            color: var(--colore-testo);
+            transition: background-color 0.4s ease, color 0.4s ease, background-image 0.4s ease;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============================================
+           SELETTORE TEMA
+           ============================================ */
+        .selettore-tema {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--colore-bordo);
+            color: var(--colore-testo);
+            padding: 8px 16px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 100;
+        }
+        body.modalita-chiara .selettore-tema {
+            background: rgba(247, 247, 247, 0.7);
+        }
+        .selettore-tema:hover {
+            border-color: var(--oro);
+            box-shadow: 0 0 20px var(--bagliore-oro);
+            transform: translateY(-1px);
+        }
+        .selettore-tema:active {
+            transform: scale(0.95);
+        }
+
+        /* ============================================
+           CONTENITORE PRINCIPALE
+           ============================================ */
+        .contenitore-app {
+            width: 100%;
+            max-width: 520px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        /* VISTE (SPA) */
+        .vista {
+            display: none;
+            width: 100%;
+        }
+        .vista.attiva {
+            display: block;
+            animation: scivolaSuDissolvenza 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ============================================
+           INTESTAZIONE HOME
+           ============================================ */
+        .intestazione-home {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .box-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 16px auto;
+            border: 2px solid var(--oro-opaco);
+            border-radius: 50%;
+            background: radial-gradient(circle, #222222 0%, #0a0a0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--oro);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            overflow: hidden;
+            position: relative;
+            animation: fluttua 4s ease-in-out infinite, pulsazioneBagliore 3s ease-in-out infinite alternate;
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .box-logo:hover {
+            animation-play-state: paused;
+            box-shadow: 0 0 40px var(--bagliore-oro-forte), 0 0 80px rgba(201, 168, 76, 0.1);
+            border-color: var(--oro);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: dissolvenzaSu 0.7s ease-out 0.2s both;
+            white-space: nowrap;
+        }
+        @media (max-width: 400px) {
+            h1 { font-size: 1.55rem; letter-spacing: 0.5px; }
+        }
+        @media (max-width: 340px) {
+            h1 { font-size: 1.35rem; letter-spacing: 0; }
+        }
+
+
+
+        /* ============================================
+           BLOCCO SOCIALE
+           ============================================ */
+        .contenitore-social {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .link-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--colore-accento);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            padding-bottom: 2px;
+            animation: dissolvenzaSu 0.5s ease-out both;
+        }
+        .link-social:nth-child(1) { animation-delay: 0.4s; }
+        .link-social:nth-child(2) { animation-delay: 0.55s; }
+        .link-social:nth-child(3) { animation-delay: 0.7s; }
+
+        .link-social::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 28px;
+            width: 0;
+            height: 1px;
+            background: var(--oro);
+            transition: width 0.3s ease;
+        }
+        .link-social:hover::after {
+            width: calc(100% - 28px);
+        }
+        .link-social:hover, .link-social:active {
+            color: var(--colore-testo);
+            transform: translateX(4px);
+        }
+        .link-social svg {
+            display: block;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        .link-social:hover svg {
+            transform: scale(1.15);
+        }
+
+        /* ============================================
+           PULSANTI DEL MENU
+           ============================================ */
+        .navigazione-menu {
+            margin-top: 35px;
+        }
+
+        .pulsante-nav {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background-color: var(--sfondo-pulsante);
+            color: var(--testo-pulsante);
+            border: 1px solid transparent;
+            border-radius: 14px;
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: dissolvenzaSu 0.5s ease-out both;
+        }
+        .navigazione-menu .pulsante-nav:nth-child(1) { animation-delay: 0.85s; }
+        .navigazione-menu .pulsante-nav:nth-child(2) { animation-delay: 1.0s; }
+
+        .pulsante-nav:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px var(--bagliore-oro), 0 0 0 1px var(--oro-opaco);
+        }
+        .pulsante-nav:active {
+            transform: scale(0.98) translateY(0);
+            opacity: 0.9;
+        }
+
+        .pulsante-nav-secondario {
+            background-color: transparent;
+            color: var(--colore-testo);
+            border: 1px solid var(--colore-bordo);
+            margin-top: 20px;
+            animation: none;
+        }
+        .pulsante-nav-secondario:hover {
+            background-color: var(--sfondo-scheda);
+            border-color: var(--oro-opaco);
+            box-shadow: 0 4px 15px var(--bagliore-oro);
+        }
+
+        /* ============================================
+           SEZIONE CHI SIAMO
+           ============================================ */
+        .titolo-sezione {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--oro);
+            padding-left: 14px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .box-foto-band {
+            width: 100%;
+            aspect-ratio: 1018 / 444;
+            border: 1px solid var(--colore-bordo);
+            border-radius: 12px;
+            background-color: var(--sfondo-scheda);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: var(--colore-accento);
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .box-foto-band:hover {
+            border-color: var(--oro-opaco);
+            box-shadow: 0 4px 20px var(--bagliore-oro);
+        }
+
+        /* ADATTAMENTO IMMAGINI */
+        .box-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            padding: 12px;
+            box-sizing: border-box;
+        }
+        .box-foto-band img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+        .box-logo img:not([src]), .box-logo img[src=""],
+        .box-foto-band img:not([src]), .box-foto-band img[src=""] {
+            display: none !important;
+        }
+
+        .testo-biografia {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--colore-testo);
+            text-align: left;
+            margin-bottom: 25px;
+            opacity: 0.85;
+        }
+        .testo-biografia strong {
+            color: var(--oro);
+            font-weight: 700;
+        }
+
+        /* ============================================
+           SCALETTA E BANDIERE
+           ============================================ */
+        .dettagli-live {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: 0.9rem;
+            color: var(--colore-accento);
+            margin-bottom: 25px;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .dettagli-live::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: var(--oro-opaco);
+        }
+
+        .svg-bandiera {
+            display: inline-block;
+            vertical-align: middle;
+            height: 1.1em;
+            width: auto;
+            aspect-ratio: 24/16;
+            border: 1px solid var(--colore-bordo);
+            border-radius: 3px;
+            transition: border-color 0.3s ease;
+        }
+        .svg-bandiera-italia { margin-left: 6px; }
+        .svg-bandiera-milano { margin-left: 4px; }
+
+        /* ============================================
+           SCHEDE CANZONI
+           ============================================ */
+        .scheda-canzone {
+            background-color: var(--sfondo-scheda);
+            border: 1px solid var(--colore-bordo);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            text-align: left;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .scheda-canzone:hover {
+            border-color: var(--oro-opaco);
+            transform: translateX(4px);
+            box-shadow: -4px 0 0 var(--oro);
+        }
+        .scheda-canzone.espansa {
+            border-color: var(--oro-opaco);
+            box-shadow: 0 2px 20px var(--bagliore-oro);
+            transform: none;
+        }
+
+        .interruttore-canzone {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            padding: 18px;
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--colore-testo);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .interruttore-canzone:hover {
+            color: var(--oro);
+        }
+        .interruttore-canzone::after {
+            content: "＋";
+            font-size: 0.9rem;
+            color: var(--colore-accento);
+            transition: all 0.3s ease;
+        }
+        .interruttore-canzone:hover::after {
+            color: var(--oro);
+        }
+        .scheda-canzone.espansa .interruttore-canzone::after {
+            content: "－";
+            color: var(--oro);
+        }
+
+        .contenuto-canzone {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .contenuto-canzone-interno {
+            padding: 0 18px 20px 18px;
+            border-top: 1px solid var(--colore-bordo);
+        }
+
+        /* TESTI CANZONI */
+        .blocco-testo {
+            margin-top: 15px;
+        }
+        .riga-milanese {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--colore-testo);
+            margin-bottom: 2px;
+        }
+        .riga-italiana {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: 0.88rem;
+            color: var(--colore-accento);
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+
+        /* ============================================
+           PIÈ DI PAGINA (FOOTER)
+           ============================================ */
+        .footer-sito {
+            text-align: center;
+            padding: 40px 0 10px;
+            margin-top: 50px;
+            border-top: 1px solid var(--colore-bordo);
+            font-size: 0.8rem;
+            color: var(--colore-accento);
+            letter-spacing: 0.5px;
+        }
+        .footer-sito .accento-oro {
+            color: var(--oro);
+            font-weight: 600;
+        }
+        .footer-sito .link-github {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--colore-accento);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .footer-sito .link-github:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        .footer-sito .link-github svg {
+            transition: filter 0.3s ease;
+        }
+        .footer-sito .link-github:hover svg {
+            filter: drop-shadow(0 0 6px #c9a84c88);
+        }
+
+        /* ============================================
+           FOTOGRAMMI CHIAVE (KEYFRAMES)
+           ============================================ */
+        @keyframes scivolaSuDissolvenza {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+                filter: blur(4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes dissolvenzaSu {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fluttua {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes pulsazioneBagliore {
+            from { box-shadow: 0 0 20px var(--bagliore-oro); }
+            to { box-shadow: 0 0 35px var(--bagliore-oro-forte), 0 0 60px rgba(201, 168, 76, 0.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CAMBIO TEMA -->
+    <button id="pulsante-tema" class="selettore-tema" onclick="cambiaTema()">☀️ Modalità Chiara</button>
+
+    <div class="contenitore-app">
+
+        <!-- ================= VISTA HOME ================= -->
+        <div id="vista-home" class="vista attiva">
+            <div class="intestazione-home">
+
+                <!-- Cerchio per la foto e Titolo -->
+                <div class="box-logo">
+                    <img id="immagine-logo" src="logo.png" alt="Logo Quei de la Stadera">
+                </div>
+                <h1>Quei de la Stadera</h1>
+
+                <div class="contenitore-social">
+                    <!-- INSTAGRAM -->
+                    <a href="https://instagram.com/queidelastadera" target="_blank" class="link-social">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="sfumatura-insta" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#fccc63"/>
+                                    <stop offset="20%" stop-color="#fba643"/>
+                                    <stop offset="40%" stop-color="#f15245"/>
+                                    <stop offset="60%" stop-color="#e11a7a"/>
+                                    <stop offset="80%" stop-color="#b61899"/>
+                                    <stop offset="100%" stop-color="#721bbb"/>
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#sfumatura-insta)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        @queidelastadera
+                    </a>
+
+                    <!-- FACEBOOK -->
+                    <a href="https://www.facebook.com/people/Quei-de-la-Stadera/61585215102565/#" target="_blank" class="link-social">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="12" fill="#1877F2"/>
+                            <g transform="translate(1.75, 2.5)">
+                                <path fill="#ffffff" d="M11.5 16V9.5H13.5L14 7.5H11.5V6C11.5 5.5 11.8 5 12.5 5H14 V3H12C10 3 8.5 4.2 8.5 6.2V7.5H6.5V9.5H8.5V16H11.5Z"/>
+                            </g>
+                        </svg>
+                        Quei de la Stadera
+                    </a>
+
+                    <!-- TIKTOK -->
+                    <a href="https://www.tiktok.com/@queidelastadera" target="_blank" class="link-social">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="-50 -50 548 612">
+                            <path fill="#ff0050" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" transform="translate(26, 26)"/>
+                            <path fill="#24f6f0" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" transform="translate(-26, -26)"/>
+                            <path fill="var(--colore-testo)" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                        </svg>
+                        @queidelastadera
+                    </a>
+                </div>
+            </div>
+
+            <div class="navigazione-menu">
+                <button class="pulsante-nav" onclick="cambiaVista('vista-chi-siamo')">Chi Siamo</button>
+                <button class="pulsante-nav" onclick="cambiaVista('vista-live-16-giugno')">Live 16 Giugno Mr. Fantasy</button>
+            </div>
+        </div>
+
+        <!-- ================= VISTA CHI SIAMO ================= -->
+        <div id="vista-chi-siamo" class="vista">
+            <h2 class="titolo-sezione">Chi Siamo</h2>
+
+            <div class="box-foto-band">
+                <span>Foto Band</span>
+                <!-- Quando avrai la foto, inserisci src="FotoBand.jpg" qui sotto -->
+                <img id="immagine-band" src="" alt="Quei de la Stadera Photo">
+            </div>
+
+            <p class="testo-biografia">
+                Siamo i <strong>Quei de la Stadera</strong>. Portiamo sul palco la tradizione e la vita milanese con sonorità moderne ed energiche. Canzoni che parlano di storie vere, di quartiere e di una Milano da riscoprire nota dopo nota, parola dopo parola.
+            </p>
+
+            <button class="pulsante-nav pulsante-nav-secondario" onclick="cambiaVista('vista-home')">← Torna alla Home</button>
+        </div>
+
+        <!-- ================= VISTA SCALETTA LIVE ================= -->
+        <div id="vista-live-16-giugno" class="vista">
+            <div id="intestazione-scaletta">
+                <h2 class="titolo-sezione">
+                    Scaletta Live
+                    <svg class="svg-bandiera svg-bandiera-italia" viewBox="0 0 24 16">
+                        <rect width="8" height="16" fill="#009246"/>
+                        <rect x="8" width="8" height="16" fill="#ffffff"/>
+                        <rect x="16" width="8" height="16" fill="#ce2b37"/>
+                    </svg>
+                    <svg class="svg-bandiera svg-bandiera-milano" viewBox="0 0 24 16">
+                        <rect width="24" height="16" fill="#ffffff"/>
+                        <rect x="10" width="4" height="16" fill="#e30613"/>
+                        <rect y="6" width="24" height="4" fill="#e30613"/>
+                    </svg>
+                </h2>
+            </div>
+            <p class="dettagli-live">16 Giugno Mr. Fantasy</p>
+
+            <div class="setlist-container">
+
+                <!-- CANZONE 1 -->
+                <div class="scheda-canzone">
+                    <button class="interruttore-canzone" onclick="mostraNascondiCanzone(this)">1. O mia bela Madunina</button>
+                    <div class="contenuto-canzone">
+                        <div class="contenuto-canzone-interno">
+                            <div class="blocco-testo">
+                                <div class="riga-milanese">O mia bela Madunina che te brillet de luntan</div>
+                                <div class="riga-italiana">O mia bella Madonnina che brilli da lontano</div>
+
+                                <div class="riga-milanese">Tuta d'or e piscinina, ti te dominet Milan</div>
+                                <div class="riga-italiana">Tutta d'oro e piccolina, tu domini Milano</div>
+
+                                <div class="riga-milanese">Suta a ti se viv la vita, se se sta mai coi man in man</div>
+                                <div class="riga-italiana">Sotto di te si vive la vita, non si sta mai con le mani in mano</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="pulsante-nav pulsante-nav-secondario" onclick="cambiaVista('vista-home')">← Torna alla Home</button>
+        </div>
+
+        <!-- ================= PIÈ DI PAGINA (FOOTER) ================= -->
+        <footer class="footer-sito">
+            <p>© <span id="anno-footer">2025</span> · <span class="accento-oro">Quei de la Stadera</span></p>
+            <a href="https://github.com/DDR-web" target="_blank" rel="noopener" class="link-github">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <defs>
+                        <linearGradient id="sfumatura-gh" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#C9A84C"/>
+                            <stop offset="50%" stop-color="#e8c96d"/>
+                            <stop offset="100%" stop-color="#a07830"/>
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#sfumatura-gh)" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                </svg>
+                DDR-web su GitHub
+            </a>
+        </footer>
+
+    </div>
+
+        <!-- LOGICA JAVASCRIPT -->
+    <script>
+        function cambiaVista(idVista, azioneIndietro = false) {
+            const viste = document.querySelectorAll('.vista');
+            viste.forEach(vista => vista.classList.remove('attiva'));
+            
+            const vistaDestinazione = document.getElementById(idVista);
+            if (vistaDestinazione) {
+                vistaDestinazione.classList.add('attiva');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                if (!azioneIndietro) {
+                    try {
+                        history.pushState({ vista: idVista }, '');
+                    } catch (e) {
+                        console.warn("Impossibile aggiornare la cronologia del browser:", e);
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('popstate', (evento) => {
+            if (evento.state && evento.state.vista) {
+                cambiaVista(evento.state.vista, true);
+            } else {
+                cambiaVista('vista-home', true);
+            }
+        });
+
+        function mostraNascondiCanzone(elementoPulsante) {
+            const scheda = elementoPulsante.parentElement;
+            const contenuto = scheda.querySelector('.contenuto-canzone');
+            const sezioneEspansa = scheda.classList.contains('espansa');
+            
+            const tutteLeSchede = document.querySelectorAll('.scheda-canzone');
+            tutteLeSchede.forEach(s => {
+                s.classList.remove('espansa');
+                const cont = s.querySelector('.contenuto-canzone');
+                if (cont) cont.style.maxHeight = null;
+            });
+            
+            if (!sezioneEspansa) {
+                scheda.classList.add('espansa');
+                contenuto.style.maxHeight = contenuto.scrollHeight + "px";
+            } else {
+                contenuto.style.maxHeight = null;
+            }
+        }
+
+        function cambiaTema() {
+            const corpo = document.body;
+            corpo.classList.toggle('modalita-chiara');
+            
+            const temaChiaro = corpo.classList.contains('modalita-chiara');
+            const pulsante = document.getElementById('pulsante-tema');
+            if (pulsante) {
+                pulsante.innerHTML = temaChiaro ? "🌙 Modalità Scura" : "☀️ Modalità Chiara";
+            }
+            
+            try {
+                localStorage.setItem('tema', temaChiaro ? 'chiaro' : 'scuro');
+            } catch (e) {
+                console.warn("LocalStorage non accessibile:", e);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            try {
+                history.replaceState({ vista: 'vista-home' }, '');
+            } catch (e) {
+                console.warn("History API non supportata localmente:", e);
+            }
+
+            try {
+                const temaSalvato = localStorage.getItem('tema');
+                if (temaSalvato === 'chiaro') {
+                    document.body.classList.add('modalita-chiara');
+                    const pulsante = document.getElementById('pulsante-tema');
+                    if (pulsante) pulsante.innerHTML = "🌙 Modalità Scura";
+                }
+            } catch (e) {
+                console.warn("LocalStorage non accessibile:", e);
+            }
+
+            // Footer: anno dinamico
+            const elementoAnno = document.getElementById('anno-footer');
+            if (elementoAnno) elementoAnno.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
