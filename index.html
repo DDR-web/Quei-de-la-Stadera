@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Quei de la Stadera - Official Site</title>
+    <title>Quei de la Stadera - Sit Uficial</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
     <meta name="description" content="Quei de la Stadera — tradizione e vita milanese sul palco con sonorità moderne ed energiche. Canzoni vere, di quartiere, di Milano.">
@@ -96,6 +96,7 @@
             color: var(--colore-testo);
             transition: background-color 0.4s ease, color 0.4s ease, background-image 0.4s ease;
             padding: 20px;
+            padding-bottom: 100px; /* spazio per il selettore lingua in basso */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -136,6 +137,92 @@
         }
         .selettore-tema:active {
             transform: scale(0.95);
+        }
+
+        /* ============================================
+           SELETTORE LINGUA (GRANDE E VISIBILE)
+           ============================================ */
+        .barra-lingua {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 0;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 2px solid var(--oro-opaco);
+            box-shadow: 0 -4px 30px rgba(201, 168, 76, 0.15);
+        }
+        body.modalita-chiara .barra-lingua {
+            background: rgba(240, 240, 240, 0.95);
+            border-top: 2px solid var(--oro-opaco);
+        }
+
+        .etichetta-lingua {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 0.75rem;
+            color: var(--oro);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0 14px;
+            white-space: nowrap;
+            opacity: 0.8;
+        }
+
+        .pulsante-lingua {
+            flex: 1;
+            max-width: 200px;
+            padding: 16px 10px;
+            border: none;
+            background: transparent;
+            color: var(--colore-accento);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            position: relative;
+        }
+        .pulsante-lingua .bandierina {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+        .pulsante-lingua .nome-lingua {
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .pulsante-lingua:hover {
+            color: var(--colore-testo);
+        }
+        .pulsante-lingua.attiva-lingua {
+            color: var(--oro);
+        }
+        .pulsante-lingua.attiva-lingua::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--oro);
+            border-radius: 0 0 4px 4px;
+        }
+        .divisore-lingua {
+            width: 1px;
+            height: 40px;
+            background: var(--colore-bordo);
+            flex-shrink: 0;
         }
 
         /* ============================================
@@ -653,32 +740,32 @@
             </div>
 
             <div class="navigazione-menu">
-                <button class="pulsante-nav" onclick="cambiaVista('vista-chi-siamo')">Chi Siamo</button>
-                <button class="pulsante-nav" onclick="cambiaVista('vista-live-16-giugno')">Live 16 Giugno Mr. Fantasy</button>
+                <button class="pulsante-nav" id="btn-chi-siamo" onclick="cambiaVista('vista-chi-siamo')">Chi Siamo</button>
+                <button class="pulsante-nav" id="btn-live" onclick="cambiaVista('vista-live-16-giugno')">Live 16 Giugno Mr. Fantasy</button>
             </div>
         </div>
 
         <!-- ================= VISTA CHI SIAMO ================= -->
         <div id="vista-chi-siamo" class="vista">
-            <h2 class="titolo-sezione">Chi Siamo</h2>
+            <h2 class="titolo-sezione" id="titolo-chi-siamo">Chi Siamo</h2>
 
             <div class="box-foto-band">
-                <span>Foto Band</span>
+                <span id="testo-foto-band">Foto Band</span>
                 <!-- Quando avrai la foto, inserisci src="FotoBand.jpg" qui sotto -->
                 <img id="immagine-band" src="" alt="Quei de la Stadera Photo">
             </div>
 
-            <p class="testo-biografia">
+            <p class="testo-biografia" id="testo-bio">
                 Siamo i <strong>Quei de la Stadera</strong>. Portiamo sul palco la tradizione e la vita milanese con sonorità moderne ed energiche. Canzoni che parlano di storie vere, di quartiere e di una Milano da riscoprire nota dopo nota, parola dopo parola.
             </p>
 
-            <button class="pulsante-nav pulsante-nav-secondario" onclick="cambiaVista('vista-home')">← Torna alla Home</button>
+            <button class="pulsante-nav pulsante-nav-secondario" id="btn-torna-home-bio" onclick="cambiaVista('vista-home')">← Torna alla Home</button>
         </div>
 
         <!-- ================= VISTA SCALETTA LIVE ================= -->
         <div id="vista-live-16-giugno" class="vista">
             <div id="intestazione-scaletta">
-                <h2 class="titolo-sezione">
+                <h2 class="titolo-sezione" id="titolo-scaletta">
                     Scaletta Live
                     <svg class="svg-bandiera svg-bandiera-italia" viewBox="0 0 24 16">
                         <rect width="8" height="16" fill="#009246"/>
@@ -692,7 +779,7 @@
                     </svg>
                 </h2>
             </div>
-            <p class="dettagli-live">16 Giugno Mr. Fantasy</p>
+            <p class="dettagli-live" id="testo-dettagli-live">16 Giugno Mr. Fantasy</p>
 
             <div class="setlist-container">
 
@@ -717,7 +804,7 @@
 
             </div>
 
-            <button class="pulsante-nav pulsante-nav-secondario" onclick="cambiaVista('vista-home')">← Torna alla Home</button>
+            <button class="pulsante-nav pulsante-nav-secondario" id="btn-torna-home-live" onclick="cambiaVista('vista-home')">← Torna alla Home</button>
         </div>
 
         <!-- ================= PIÈ DI PAGINA (FOOTER) ================= -->
@@ -740,17 +827,135 @@
 
     </div>
 
-        <!-- LOGICA JAVASCRIPT -->
+    <!-- SELETTORE LINGUA IN BASSO — SEMPRE VISIBILE -->
+    <div class="barra-lingua" id="barra-lingua">
+        <span class="etichetta-lingua">🗣️ Lenga</span>
+        <div class="divisore-lingua"></div>
+        <button class="pulsante-lingua attiva-lingua" id="btn-milanese" onclick="cambiaLingua('milanese')" title="Milanes">
+            <span class="bandierina">🏙️</span>
+            <span class="nome-lingua">Milanés</span>
+        </button>
+        <div class="divisore-lingua"></div>
+        <button class="pulsante-lingua" id="btn-italiano" onclick="cambiaLingua('italiano')" title="Italiano">
+            <span class="bandierina">🇮🇹</span>
+            <span class="nome-lingua">Italiano</span>
+        </button>
+        <div class="divisore-lingua"></div>
+    </div>
+
+    <!-- LOGICA JAVASCRIPT -->
     <script>
+        /* ============================================
+           DIZIONARI LINGUA
+           ============================================ */
+        const testi = {
+            milanese: {
+                titoloSito: "Quei de la Stadera - Sit Uficial",
+                btnTemaChiaro: "☀️ Mòd Ciara",
+                btnTemaScuro: "🌙 Mòd Scüra",
+                btnChiSiamo: "Chi Semm",
+                btnLive: "Live 16 Giügn Mr. Fantasy",
+                titoloChiSiamo: "Chi Semm",
+                fotoBand: "Foto de la Banda",
+                bio: `Semm i <strong>Quei de la Stadera</strong>. Portémm sul palch la tradizion e la vita milanesa con sonorità modèrni e energichi. Cansón che la parla de stòri veri, de curt e de ona Milan da descuvrì nota dòpo nota, parola dòpo parola.`,
+                tornaCasa: "← Torna a Cà",
+                titoloScaletta: "Scaléta Live",
+                dettagliLive: "16 Giügn Mr. Fantasy",
+            },
+            italiano: {
+                titoloSito: "Quei de la Stadera - Sito Ufficiale",
+                btnTemaChiaro: "☀️ Modalità Chiara",
+                btnTemaScuro: "🌙 Modalità Scura",
+                btnChiSiamo: "Chi Siamo",
+                btnLive: "Live 16 Giugno Mr. Fantasy",
+                titoloChiSiamo: "Chi Siamo",
+                fotoBand: "Foto Band",
+                bio: `Siamo i <strong>Quei de la Stadera</strong>. Portiamo sul palco la tradizione e la vita milanese con sonorità moderne ed energiche. Canzoni che parlano di storie vere, di quartiere e di una Milano da riscoprire nota dopo nota, parola dopo parola.`,
+                tornaCasa: "← Torna alla Home",
+                titoloScaletta: "Scaletta Live",
+                dettagliLive: "16 Giugno Mr. Fantasy",
+            }
+        };
+
+        let linguaCorrente = 'milanese';
+
+        function cambiaLingua(lingua) {
+            linguaCorrente = lingua;
+
+            // Aggiorna pulsanti lingua
+            document.getElementById('btn-milanese').classList.toggle('attiva-lingua', lingua === 'milanese');
+            document.getElementById('btn-italiano').classList.toggle('attiva-lingua', lingua === 'italiano');
+
+            const t = testi[lingua];
+
+            // Titolo sito
+            document.title = t.titoloSito;
+
+            // Pulsante tema (preservando l'emoji e la modalità corrente)
+            const pulsanteTema = document.getElementById('pulsante-tema');
+            const temaChiaro = document.body.classList.contains('modalita-chiara');
+            if (pulsanteTema) {
+                pulsanteTema.innerHTML = temaChiaro ? t.btnTemaScuro : t.btnTemaChiaro;
+            }
+
+            // Pulsanti navigazione home
+            const btnChiSiamo = document.getElementById('btn-chi-siamo');
+            if (btnChiSiamo) btnChiSiamo.textContent = t.btnChiSiamo;
+
+            const btnLive = document.getElementById('btn-live');
+            if (btnLive) btnLive.textContent = t.btnLive;
+
+            // Titolo Chi Siamo
+            const titoloChiSiamo = document.getElementById('titolo-chi-siamo');
+            if (titoloChiSiamo) titoloChiSiamo.textContent = t.titoloChiSiamo;
+
+            // Testo foto band
+            const testFoto = document.getElementById('testo-foto-band');
+            if (testFoto) testFoto.textContent = t.fotoBand;
+
+            // Biografia
+            const bio = document.getElementById('testo-bio');
+            if (bio) bio.innerHTML = t.bio;
+
+            // Pulsanti "Torna"
+            const btnTornaBio = document.getElementById('btn-torna-home-bio');
+            if (btnTornaBio) btnTornaBio.textContent = t.tornaCasa;
+
+            const btnTornaLive = document.getElementById('btn-torna-home-live');
+            if (btnTornaLive) btnTornaLive.textContent = t.tornaCasa;
+
+            // Titolo scaletta (preservando le bandierine SVG)
+            const titoloScaletta = document.getElementById('titolo-scaletta');
+            if (titoloScaletta) {
+                // Mantieni le bandiere SVG
+                const bandiere = titoloScaletta.querySelectorAll('.svg-bandiera');
+                titoloScaletta.innerHTML = '';
+                titoloScaletta.appendChild(document.createTextNode(t.titoloScaletta + ' '));
+                bandiere.forEach(b => titoloScaletta.appendChild(b));
+            }
+
+            // Dettagli live
+            const dettagliLive = document.getElementById('testo-dettagli-live');
+            if (dettagliLive) dettagliLive.textContent = t.dettagliLive;
+
+            // Salva preferenza
+            try {
+                localStorage.setItem('lingua', lingua);
+            } catch(e) {}
+        }
+
+        /* ============================================
+           NAVIGAZIONE SPA
+           ============================================ */
         function cambiaVista(idVista, azioneIndietro = false) {
             const viste = document.querySelectorAll('.vista');
             viste.forEach(vista => vista.classList.remove('attiva'));
-            
+
             const vistaDestinazione = document.getElementById(idVista);
             if (vistaDestinazione) {
                 vistaDestinazione.classList.add('attiva');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                
+
                 if (!azioneIndietro) {
                     try {
                         history.pushState({ vista: idVista }, '');
@@ -769,18 +974,22 @@
             }
         });
 
+        /* ============================================
+           FISARMONICA CANZONI
+           ============================================ */
         function mostraNascondiCanzone(elementoPulsante) {
             const scheda = elementoPulsante.parentElement;
+
             const contenuto = scheda.querySelector('.contenuto-canzone');
             const sezioneEspansa = scheda.classList.contains('espansa');
-            
+
             const tutteLeSchede = document.querySelectorAll('.scheda-canzone');
             tutteLeSchede.forEach(s => {
                 s.classList.remove('espansa');
                 const cont = s.querySelector('.contenuto-canzone');
                 if (cont) cont.style.maxHeight = null;
             });
-            
+
             if (!sezioneEspansa) {
                 scheda.classList.add('espansa');
                 contenuto.style.maxHeight = contenuto.scrollHeight + "px";
@@ -789,16 +998,20 @@
             }
         }
 
+        /* ============================================
+           CAMBIO TEMA
+           ============================================ */
         function cambiaTema() {
             const corpo = document.body;
             corpo.classList.toggle('modalita-chiara');
-            
+
             const temaChiaro = corpo.classList.contains('modalita-chiara');
             const pulsante = document.getElementById('pulsante-tema');
+            const t = testi[linguaCorrente];
             if (pulsante) {
-                pulsante.innerHTML = temaChiaro ? "🌙 Modalità Scura" : "☀️ Modalità Chiara";
+                pulsante.innerHTML = temaChiaro ? t.btnTemaScuro : t.btnTemaChiaro;
             }
-            
+
             try {
                 localStorage.setItem('tema', temaChiaro ? 'chiaro' : 'scuro');
             } catch (e) {
@@ -806,6 +1019,9 @@
             }
         }
 
+        /* ============================================
+           AVVIO
+           ============================================ */
         window.addEventListener('DOMContentLoaded', () => {
             try {
                 history.replaceState({ vista: 'vista-home' }, '');
@@ -813,12 +1029,22 @@
                 console.warn("History API non supportata localmente:", e);
             }
 
+            // Ripristina lingua salvata (default: milanese)
+            try {
+                const linguaSalvata = localStorage.getItem('lingua') || 'milanese';
+                cambiaLingua(linguaSalvata);
+            } catch (e) {
+                cambiaLingua('milanese');
+            }
+
+            // Ripristina tema salvato
             try {
                 const temaSalvato = localStorage.getItem('tema');
                 if (temaSalvato === 'chiaro') {
                     document.body.classList.add('modalita-chiara');
                     const pulsante = document.getElementById('pulsante-tema');
-                    if (pulsante) pulsante.innerHTML = "🌙 Modalità Scura";
+                    const t = testi[linguaCorrente];
+                    if (pulsante) pulsante.innerHTML = t.btnTemaScuro;
                 }
             } catch (e) {
                 console.warn("LocalStorage non accessibile:", e);
