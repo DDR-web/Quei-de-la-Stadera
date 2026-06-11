@@ -96,7 +96,6 @@
             color: var(--colore-testo);
             transition: background-color 0.4s ease, color 0.4s ease, background-image 0.4s ease;
             padding: 20px;
-            padding-bottom: 100px; /* spazio per il selettore lingua in basso */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -107,18 +106,20 @@
         }
 
         /* ============================================
-           SELETTORE TEMA
+           PULSANTI BARRA IN ALTO (TEMA + LINGUA)
            ============================================ */
-        .selettore-tema {
+
+        /* Stile base condiviso per entrambi i pulsanti */
+        .selettore-tema,
+        .selettore-lingua {
             position: absolute;
             top: 20px;
-            right: 20px;
             background: rgba(17, 17, 17, 0.7);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--colore-bordo);
             color: var(--colore-testo);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 24px;
             cursor: pointer;
             font-size: 0.8rem;
@@ -126,104 +127,57 @@
             letter-spacing: 0.3px;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
         }
-        body.modalita-chiara .selettore-tema {
+        body.modalita-chiara .selettore-tema,
+        body.modalita-chiara .selettore-lingua {
             background: rgba(247, 247, 247, 0.7);
         }
-        .selettore-tema:hover {
+        .selettore-tema:hover,
+        .selettore-lingua:hover {
             border-color: var(--oro);
             box-shadow: 0 0 20px var(--bagliore-oro);
             transform: translateY(-1px);
         }
-        .selettore-tema:active {
+        .selettore-tema:active,
+        .selettore-lingua:active {
             transform: scale(0.95);
         }
 
-        /* ============================================
-           SELETTORE LINGUA (GRANDE E VISIBILE)
-           ============================================ */
-        .barra-lingua {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            padding: 0;
-            background: rgba(10, 10, 10, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-top: 2px solid var(--oro-opaco);
-            box-shadow: 0 -4px 30px rgba(201, 168, 76, 0.15);
-        }
-        body.modalita-chiara .barra-lingua {
-            background: rgba(240, 240, 240, 0.95);
-            border-top: 2px solid var(--oro-opaco);
+        /* Tema: in alto a destra */
+        .selettore-tema {
+            right: 20px;
         }
 
-        .etichetta-lingua {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 0.75rem;
-            color: var(--oro);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 0 14px;
-            white-space: nowrap;
-            opacity: 0.8;
+        /* Lingua: in alto a sinistra */
+        .selettore-lingua {
+            left: 20px;
         }
 
-        .pulsante-lingua {
-            flex: 1;
-            max-width: 200px;
-            padding: 16px 10px;
-            border: none;
-            background: transparent;
-            color: var(--colore-accento);
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            flex-direction: column;
+        /* Bandierine SVG nel pulsante lingua */
+        .selettore-lingua .bandiere-toggle {
+            display: inline-flex;
             align-items: center;
             gap: 3px;
-            position: relative;
         }
-        .pulsante-lingua .bandierina {
-            font-size: 1.6rem;
-            line-height: 1;
-        }
-        .pulsante-lingua .nome-lingua {
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .pulsante-lingua:hover {
-            color: var(--colore-testo);
-        }
-        .pulsante-lingua.attiva-lingua {
-            color: var(--oro);
-        }
-        .pulsante-lingua.attiva-lingua::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10%;
-            right: 10%;
-            height: 3px;
-            background: var(--oro);
-            border-radius: 0 0 4px 4px;
-        }
-        .divisore-lingua {
-            width: 1px;
-            height: 40px;
-            background: var(--colore-bordo);
+        .selettore-lingua svg.mini-bandiera {
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 2px;
             flex-shrink: 0;
+            transition: opacity 0.2s ease;
         }
+        body.modalita-chiara .selettore-lingua svg.mini-bandiera {
+            border-color: rgba(0,0,0,0.2);
+        }
+        /* La bandiera della lingua NON attiva è leggermente opaca */
+        .selettore-lingua svg.mini-bandiera.inattiva {
+            opacity: 0.35;
+        }
+
+
 
         /* ============================================
            CONTENITORE PRINCIPALE
@@ -685,6 +639,25 @@
     <!-- CAMBIO TEMA -->
     <button id="pulsante-tema" class="selettore-tema" onclick="cambiaTema()">☀️ Modalità Chiara</button>
 
+    <!-- SELETTORE LINGUA (in alto a sinistra) -->
+    <button id="pulsante-lingua" class="selettore-lingua" onclick="alternaLingua()" title="Cambia lingua / Cambia lenga">
+        <span class="bandiere-toggle">
+            <!-- Bandiera Milano (croce di Ariberto) -->
+            <svg class="mini-bandiera" id="bandiera-mil" width="22" height="15" viewBox="0 0 24 16">
+                <rect width="24" height="16" fill="#ffffff"/>
+                <rect x="10" width="4" height="16" fill="#e30613"/>
+                <rect y="6" width="24" height="4" fill="#e30613"/>
+            </svg>
+            <!-- Bandiera Italia -->
+            <svg class="mini-bandiera" id="bandiera-ita" width="22" height="15" viewBox="0 0 24 16">
+                <rect width="8" height="16" fill="#009246"/>
+                <rect x="8" width="8" height="16" fill="#ffffff"/>
+                <rect x="16" width="8" height="16" fill="#ce2b37"/>
+            </svg>
+        </span>
+        <span id="etichetta-lingua">Milanés</span>
+    </button>
+
     <div class="contenitore-app">
 
         <!-- ================= VISTA HOME ================= -->
@@ -827,22 +800,6 @@
 
     </div>
 
-    <!-- SELETTORE LINGUA IN BASSO — SEMPRE VISIBILE -->
-    <div class="barra-lingua" id="barra-lingua">
-        <span class="etichetta-lingua">🗣️ Lenga</span>
-        <div class="divisore-lingua"></div>
-        <button class="pulsante-lingua attiva-lingua" id="btn-milanese" onclick="cambiaLingua('milanese')" title="Milanes">
-            <span class="bandierina">🏙️</span>
-            <span class="nome-lingua">Milanés</span>
-        </button>
-        <div class="divisore-lingua"></div>
-        <button class="pulsante-lingua" id="btn-italiano" onclick="cambiaLingua('italiano')" title="Italiano">
-            <span class="bandierina">🇮🇹</span>
-            <span class="nome-lingua">Italiano</span>
-        </button>
-        <div class="divisore-lingua"></div>
-    </div>
-
     <!-- LOGICA JAVASCRIPT -->
     <script>
         /* ============================================
@@ -851,6 +808,7 @@
         const testi = {
             milanese: {
                 titoloSito: "Quei de la Stadera - Sit Uficial",
+                etichettaLingua: "Milanés",
                 btnTemaChiaro: "☀️ Mòd Ciara",
                 btnTemaScuro: "🌙 Mòd Scüra",
                 btnChiSiamo: "Chi Semm",
@@ -864,6 +822,7 @@
             },
             italiano: {
                 titoloSito: "Quei de la Stadera - Sito Ufficiale",
+                etichettaLingua: "Italiano",
                 btnTemaChiaro: "☀️ Modalità Chiara",
                 btnTemaScuro: "🌙 Modalità Scura",
                 btnChiSiamo: "Chi Siamo",
@@ -879,19 +838,37 @@
 
         let linguaCorrente = 'milanese';
 
+        /* Alterna tra le due lingue al click */
+        function alternaLingua() {
+            cambiaLingua(linguaCorrente === 'milanese' ? 'italiano' : 'milanese');
+        }
+
         function cambiaLingua(lingua) {
             linguaCorrente = lingua;
 
-            // Aggiorna pulsanti lingua
-            document.getElementById('btn-milanese').classList.toggle('attiva-lingua', lingua === 'milanese');
-            document.getElementById('btn-italiano').classList.toggle('attiva-lingua', lingua === 'italiano');
-
             const t = testi[lingua];
+
+            // Aggiorna etichetta del pulsante
+            const etichetta = document.getElementById('etichetta-lingua');
+            if (etichetta) etichetta.textContent = t.etichettaLingua;
+
+            // Bandiera attiva piena, inattiva opaca
+            const bandieraMil = document.getElementById('bandiera-mil');
+            const bandierapIta = document.getElementById('bandiera-ita');
+            if (bandieraMil && bandierapIta) {
+                if (lingua === 'milanese') {
+                    bandieraMil.classList.remove('inattiva');
+                    bandierapIta.classList.add('inattiva');
+                } else {
+                    bandierapIta.classList.remove('inattiva');
+                    bandieraMil.classList.add('inattiva');
+                }
+            }
 
             // Titolo sito
             document.title = t.titoloSito;
 
-            // Pulsante tema (preservando l'emoji e la modalità corrente)
+            // Pulsante tema (preservando la modalità corrente)
             const pulsanteTema = document.getElementById('pulsante-tema');
             const temaChiaro = document.body.classList.contains('modalita-chiara');
             if (pulsanteTema) {
@@ -924,10 +901,9 @@
             const btnTornaLive = document.getElementById('btn-torna-home-live');
             if (btnTornaLive) btnTornaLive.textContent = t.tornaCasa;
 
-            // Titolo scaletta (preservando le bandierine SVG)
+            // Titolo scaletta (preservando le bandiere SVG)
             const titoloScaletta = document.getElementById('titolo-scaletta');
             if (titoloScaletta) {
-                // Mantieni le bandiere SVG
                 const bandiere = titoloScaletta.querySelectorAll('.svg-bandiera');
                 titoloScaletta.innerHTML = '';
                 titoloScaletta.appendChild(document.createTextNode(t.titoloScaletta + ' '));
