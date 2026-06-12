@@ -1477,6 +1477,13 @@
             if (!sezioneEspansa) {
                 scheda.classList.add('espansa');
                 contenuto.style.maxHeight = contenuto.scrollHeight + "px";
+
+                // Scorri all'inizio della canzone appena aperta.
+                // Il piccolo ritardo lascia partire la transizione CSS prima dello scroll,
+                // così l'utente parte sempre dall'inizio del testo e non dalla fine del brano precedente.
+                setTimeout(() => {
+                    elementoPulsante.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 80);
             } else {
                 contenuto.style.maxHeight = null;
             }
