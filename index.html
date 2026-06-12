@@ -1478,10 +1478,11 @@
                 scheda.classList.add('espansa');
                 contenuto.style.maxHeight = contenuto.scrollHeight + "px";
 
-                // Torna in cima alla pagina quando si apre una nuova canzone.
+                // Aspetta che la scheda precedente finisca di chiudersi (transizione CSS 350ms)
+                // prima di tornare in cima, così la pagina non si sposta a metà strada.
                 setTimeout(() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 80);
+                }, 370);
             } else {
                 contenuto.style.maxHeight = null;
             }
