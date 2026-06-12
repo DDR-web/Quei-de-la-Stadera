@@ -1463,12 +1463,15 @@
            ============================================ */
         function mostraNascondiCanzone(elementoPulsante) {
             const scheda = elementoPulsante.parentElement;
-
             const contenuto = scheda.querySelector('.contenuto-canzone');
             const sezioneEspansa = scheda.classList.contains('espansa');
 
-            const tutteLeSchede = document.querySelectorAll('.scheda-canzone');
-            tutteLeSchede.forEach(s => {
+            // Trova la scheda già aperta (se esiste) prima di chiuderla
+            const schedaAperta = document.querySelector('.scheda-canzone.espansa');
+            const contenutoAperto = schedaAperta ? schedaAperta.querySelector('.contenuto-canzone') : null;
+
+            // Chiudi tutte
+            document.querySelectorAll('.scheda-canzone').forEach(s => {
                 s.classList.remove('espansa');
                 const cont = s.querySelector('.contenuto-canzone');
                 if (cont) cont.style.maxHeight = null;
@@ -1478,13 +1481,17 @@
                 scheda.classList.add('espansa');
                 contenuto.style.maxHeight = contenuto.scrollHeight + "px";
 
-                // Aspetta che la scheda precedente finisca di chiudersi (transizione CSS 350ms)
-                // prima di tornare in cima, così la pagina non si sposta a metà strada.
-                setTimeout(() => {
+                if (contenutoAperto) {
+                    // Aspetta esattamente la fine dell'animazione di chiusura, poi scorri
+                    const onTransitionEnd = () => {
+                        contenutoAperto.removeEventListener('transitionend', onTransitionEnd);
+                        setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 30);
+                    };
+                    contenutoAperto.addEventListener('transitionend', onTransitionEnd);
+                } else {
+                    // Nessuna scheda era aperta: scorri subito
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 370);
-            } else {
-                contenuto.style.maxHeight = null;
+                }
             }
         }
 
