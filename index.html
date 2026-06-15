@@ -495,53 +495,60 @@
             transform: none;
         }
 
-        /* Canzone ospite — bordo sfumato alternato oro/bianco */
+        /* Canzone ospite — bordo animato neon bianco con punto oro rotante */
+        @property --angolo-bordo {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
         .scheda-canzone-ospite {
-            background-color: #1e1e1e;
+            --angolo-bordo: 0deg;
+            background: #1e1e1e;
             border: none;
             position: relative;
+            isolation: isolate;
+            animation: ruotaBordoOspite 3s linear infinite;
         }
         body.modalita-chiara .scheda-canzone-ospite {
-            background-color: #f0ede6;
+            background: #f0ede6;
         }
+        /* Anello animato */
         .scheda-canzone-ospite::before {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: 12px;
-            padding: 2px;
-            background: repeating-linear-gradient(
-                90deg,
-                var(--oro) 0px,
-                var(--oro) 10px,
-                #ffffff 10px,
-                #ffffff 20px
+            inset: -2px;
+            border-radius: 14px;
+            background: conic-gradient(
+                from var(--angolo-bordo),
+                var(--oro) 0deg,
+                #ffffff 20deg,
+                #ffffff 340deg,
+                var(--oro) 360deg
             );
-            -webkit-mask:
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            z-index: 0;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+            z-index: -1;
         }
-        .scheda-canzone-ospite:hover::before,
-        .scheda-canzone-ospite.espansa::before {
-            background: repeating-linear-gradient(
-                90deg,
-                var(--oro) 0px,
-                var(--oro) 10px,
-                #ffffff 10px,
-                #ffffff 20px
-            );
-            opacity: 1;
+        /* Riempimento interno che crea lo spessore del bordo */
+        .scheda-canzone-ospite::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border-radius: 11px;
+            background: #1e1e1e;
+            z-index: -1;
+        }
+        body.modalita-chiara .scheda-canzone-ospite::after {
+            background: #f0ede6;
+        }
+        @keyframes ruotaBordoOspite {
+            to { --angolo-bordo: 360deg; }
         }
         .scheda-canzone-ospite:hover {
             transform: translateX(4px);
             box-shadow: none;
         }
         .scheda-canzone-ospite.espansa {
-            box-shadow: 0 2px 20px var(--bagliore-oro);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
             transform: none;
         }
         .interruttore-canzone-ospite {
@@ -1395,7 +1402,7 @@
                                 <div class="riga-italiana-solo">La loro musica l'hanno dentro</div>
                                 <div class="riga-italiana-solo">Aspettando che venga il loro tempo</div>
                                 <div class="riga-italiana-solo">Il tempo giusto che gli darà</div>
-                                <div class="riga-italiana-solo strofa-separatore">Un sogno da poter realizzar</div>
+                                <div class="riga-italiana-solo">Un sogno da poter realizzar</div>
 
                                 <div class="riga-italiana-solo strofa-separatore">Il borgo della musica ti tira dentro</div>
                                 <div class="riga-italiana-solo">Ti fa sognare tutto in un momento</div>
