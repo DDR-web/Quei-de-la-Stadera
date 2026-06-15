@@ -495,21 +495,54 @@
             transform: none;
         }
 
-        /* Canzone ospite — stile distinto */
+        /* Canzone ospite — bordo sfumato alternato oro/bianco */
         .scheda-canzone-ospite {
             background-color: #1e1e1e;
-            border: 1.5px dashed var(--oro-opaco);
+            border: none;
+            position: relative;
         }
         body.modalita-chiara .scheda-canzone-ospite {
             background-color: #f0ede6;
         }
+        .scheda-canzone-ospite::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 2px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--oro) 0px,
+                var(--oro) 10px,
+                #ffffff 10px,
+                #ffffff 20px
+            );
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .scheda-canzone-ospite:hover::before,
+        .scheda-canzone-ospite.espansa::before {
+            background: repeating-linear-gradient(
+                90deg,
+                var(--oro) 0px,
+                var(--oro) 10px,
+                #ffffff 10px,
+                #ffffff 20px
+            );
+            opacity: 1;
+        }
         .scheda-canzone-ospite:hover {
-            border-color: var(--oro);
-            border-style: dashed;
+            transform: translateX(4px);
+            box-shadow: none;
         }
         .scheda-canzone-ospite.espansa {
-            border-style: dashed;
-            border-color: var(--oro);
+            box-shadow: 0 2px 20px var(--bagliore-oro);
+            transform: none;
         }
         .interruttore-canzone-ospite {
             color: #e8d9b0;
@@ -1362,7 +1395,14 @@
                                 <div class="riga-italiana-solo">La loro musica l'hanno dentro</div>
                                 <div class="riga-italiana-solo">Aspettando che venga il loro tempo</div>
                                 <div class="riga-italiana-solo">Il tempo giusto che gli darà</div>
-                                <div class="riga-italiana-solo">Un sogno da poter realizzzar</div>
+                                <div class="riga-italiana-solo strofa-separatore">Un sogno da poter realizzar</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">Il borgo della musica ti tira dentro</div>
+                                <div class="riga-italiana-solo">Ti fa sognare tutto in un momento</div>
+                                <div class="riga-italiana-solo">Il borgo della musica ti fa imparare</div>
+                                <div class="riga-italiana-solo">Ti dà la grinta per poter cantare</div>
+                                <div class="riga-italiana-solo">Tutti insieme possiamo stare</div>
+                                <div class="riga-italiana-solo">Nelle varie sale per poter suonare</div>
 
                                 <div class="riga-italiana-solo strofa-separatore">Portami in note tutto quello che ho dentro,</div>
                                 <div class="riga-italiana-solo">trasforma in musica questo gran sentimento,</div>
@@ -1383,13 +1423,6 @@
                                 <div class="riga-italiana-solo">Ti dà la grinta per poter cantare</div>
                                 <div class="riga-italiana-solo">Tutti insieme possiamo stare</div>
                                 <div class="riga-italiana-solo">Sopra un palco per farci apprezzare</div>
-
-                                <div class="riga-italiana-solo strofa-separatore">Il borgo della musica ti tira dentro</div>
-                                <div class="riga-italiana-solo">Ti fa sognare tutto in un momento</div>
-                                <div class="riga-italiana-solo">Il borgo della musica ti fa imparare</div>
-                                <div class="riga-italiana-solo">Ti dà la grinta per poter cantare</div>
-                                <div class="riga-italiana-solo">Tutti insieme possiamo stare</div>
-                                <div class="riga-italiana-solo">Nelle varie sale per poter suonare</div>
                             </div>
                         </div>
                     </div>
