@@ -495,6 +495,58 @@
             transform: none;
         }
 
+        /* Canzone ospite — stile distinto */
+        .scheda-canzone-ospite {
+            background-color: #1e1e1e;
+            border: 1.5px dashed var(--oro-opaco);
+        }
+        body.modalita-chiara .scheda-canzone-ospite {
+            background-color: #f0ede6;
+        }
+        .scheda-canzone-ospite:hover {
+            border-color: var(--oro);
+            border-style: dashed;
+        }
+        .scheda-canzone-ospite.espansa {
+            border-style: dashed;
+            border-color: var(--oro);
+        }
+        .interruttore-canzone-ospite {
+            color: #e8d9b0;
+        }
+        body.modalita-chiara .interruttore-canzone-ospite {
+            color: #5a4a20;
+        }
+        .interruttore-canzone-ospite:hover {
+            color: var(--oro) !important;
+        }
+        .badge-ospite {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--oro);
+            border: 1px solid var(--oro-opaco);
+            border-radius: 10px;
+            padding: 2px 7px;
+            margin-left: 8px;
+            opacity: 0.85;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .riga-italiana-solo {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--colore-testo);
+            margin-bottom: 6px;
+            opacity: 0.88;
+        }
+        .riga-italiana-solo.strofa-separatore {
+            margin-top: 16px;
+        }
+
         .interruttore-canzone {
             font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
             padding: 18px;
@@ -1278,6 +1330,66 @@
 
                                 <div class="riga-milanese">Ma Milan, l'è on gran Milan</div>
                                 <div class="riga-italiana">ma Milano, è una grande Milano.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CANZONE 6 — GLUFELDO: IL BORGO (OSPITE) -->
+                <div class="scheda-canzone scheda-canzone-ospite">
+                    <button class="interruttore-canzone interruttore-canzone-ospite" onclick="mostraNascondiCanzone(this)">
+                        <span>6. Glufeldo — Il Borgo <span class="badge-ospite">Ospite</span></span>
+                    </button>
+                    <div class="contenuto-canzone">
+                        <div class="contenuto-canzone-interno">
+                            <div class="blocco-testo">
+                                <div class="riga-italiana-solo">Arrivati ad una certa età</div>
+                                <div class="riga-italiana-solo">Si ha bisogno di serenità</div>
+                                <div class="riga-italiana-solo">La passione che nascondi dentro</div>
+                                <div class="riga-italiana-solo">La fai sbocciare tutta in un momento</div>
+                                <div class="riga-italiana-solo">Grazie ad un'amica, mi ritrovo qua</div>
+                                <div class="riga-italiana-solo">Suono e canto, come mai sapevo far</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">Il borgo della musica ti tira dentro</div>
+                                <div class="riga-italiana-solo">Ti fa sognare tutto in un momento</div>
+                                <div class="riga-italiana-solo">Il borgo della musica ti fa imparare</div>
+                                <div class="riga-italiana-solo">Ti dà la grinta per poter cantare</div>
+                                <div class="riga-italiana-solo">Tutti insieme possiamo stare</div>
+                                <div class="riga-italiana-solo">Nelle varie sale per poter suonare</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">Tanti i giovani vengon qua</div>
+                                <div class="riga-italiana-solo">Con un sogno per l'eternità</div>
+                                <div class="riga-italiana-solo">La loro musica l'hanno dentro</div>
+                                <div class="riga-italiana-solo">Aspettando che venga il loro tempo</div>
+                                <div class="riga-italiana-solo">Il tempo giusto che gli darà</div>
+                                <div class="riga-italiana-solo">Un sogno da poter realizzzar</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">Portami in note tutto quello che ho dentro,</div>
+                                <div class="riga-italiana-solo">trasforma in musica questo gran sentimento,</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">La grancassa e il rullante ci fa tremare,</div>
+                                <div class="riga-italiana-solo">il basso suo complemento ci da la base,</div>
+                                <div class="riga-italiana-solo">chitarre suonanti chitarre strillanti</div>
+                                <div class="riga-italiana-solo">quello che sentite ci rende brillanti</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">Noi siamo tutti qua dove c'è tanto da imparar,</div>
+                                <div class="riga-italiana-solo">Ringrazio lo staff e tutti i maestri che son qua</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">Il borgo della musica è una grande città</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">Il borgo della musica ti tira dentro</div>
+                                <div class="riga-italiana-solo">Ti fa sognare tutto in un momento</div>
+                                <div class="riga-italiana-solo">Il borgo della musica ti fa imparare</div>
+                                <div class="riga-italiana-solo">Ti dà la grinta per poter cantare</div>
+                                <div class="riga-italiana-solo">Tutti insieme possiamo stare</div>
+                                <div class="riga-italiana-solo">Sopra un palco per farci apprezzare</div>
+
+                                <div class="riga-italiana-solo strofa-separatore">Il borgo della musica ti tira dentro</div>
+                                <div class="riga-italiana-solo">Ti fa sognare tutto in un momento</div>
+                                <div class="riga-italiana-solo">Il borgo della musica ti fa imparare</div>
+                                <div class="riga-italiana-solo">Ti dà la grinta per poter cantare</div>
+                                <div class="riga-italiana-solo">Tutti insieme possiamo stare</div>
+                                <div class="riga-italiana-solo">Nelle varie sale per poter suonare</div>
                             </div>
                         </div>
                     </div>
